@@ -1,0 +1,4 @@
+*.test
+*.cpu
+cmd/randstr/randstr*
+binaries/

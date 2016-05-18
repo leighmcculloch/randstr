@@ -1,0 +1,11 @@
+version: 1.0.{build}
+branches:
+except:
+- binaries
+clone_folder: c:\gopath\src\github.com\leighmcculloch\randstr
+environment:
+  GOVERSION: 1.6
+  GOPATH: c:\gopath
+build: off
+test_script:
+- cmd: go test -cover ./...
