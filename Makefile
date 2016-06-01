@@ -1,6 +1,10 @@
 test:
 	go test -cover ./lib/randstr ./cmd/randstr
 
+cover:
+	go test -coverprofile=coverprofile ./lib/randstr
+	go tool cover -html=coverprofile
+
 build:
 	go build ./lib/randstr
 	go build ./cmd/randstr
