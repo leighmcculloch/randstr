@@ -6,10 +6,10 @@ import (
 )
 
 // New generates a new random string of length given, using only the characters given in runes.
-func New(length int, runes []rune) string {
+func New(length int, runes Runes) string {
 	s := make([]rune, length)
 
-	runesCount := len(runes)
+	runesCount := runes.Length()
 	byteCount := byteLen(runesCount)
 	bytes := make([]byte, byteCount)
 
@@ -22,7 +22,7 @@ func New(length int, runes []rune) string {
 		}
 		n = n % runesCount
 
-		s[i] = runes[n]
+		s[i] = runes.At(n)
 	}
 
 	return string(s)

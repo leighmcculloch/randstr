@@ -10,10 +10,10 @@ const (
 )
 
 var (
-	ASCIIUppercaseRunes  = []rune(ASCIIUppercaseChars)
-	ASCIILowercaseRunes  = []rune(ASCIILowercaseChars)
-	ASCIINumericRunes    = []rune(ASCIINumericChars)
-	ASCIIWhitespaceRunes = []rune(ASCIIWhitespaceChars)
-	ASCIISymbolRunes     = []rune(ASCIISymbolChars)
-	ASCIIRunes           = []rune(ASCIIChars)
+	ASCIIUppercaseRunes  = RuneArray(ASCIIUppercaseChars)
+	ASCIILowercaseRunes  = RuneArray(ASCIILowercaseChars)
+	ASCIINumericRunes    = RuneArray(ASCIINumericChars)
+	ASCIIWhitespaceRunes = RuneArray(ASCIIWhitespaceChars)
+	ASCIISymbolRunes     = RuneArray(ASCIISymbolChars)
+	ASCIIRunes           = RuneArray(ASCIIChars)
 )

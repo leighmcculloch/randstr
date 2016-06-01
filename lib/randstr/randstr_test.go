@@ -7,7 +7,7 @@ func TestNew(t *testing.T) {
 	attempts := 500
 	passwordsSeen := make(map[string]bool)
 	for i := 0; i < attempts; i++ {
-		password := New(length, ASCIINumericRunes)
+		password := New(length, RuneArray(ASCIINumericRunes))
 		passwordLen := len(password)
 		switch {
 		case passwordLen != length:
