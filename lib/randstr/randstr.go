@@ -7,7 +7,7 @@ import (
 
 // New generates a new random string of length given, using only the characters given in runes.
 func New(length int, runes []rune) string {
-	password := make([]rune, length)
+	s := make([]rune, length)
 
 	runesCount := len(runes)
 	byteCount := byteLen(runesCount)
@@ -22,8 +22,8 @@ func New(length int, runes []rune) string {
 		}
 		n = n % runesCount
 
-		password[i] = runes[n]
+		s[i] = runes[n]
 	}
 
-	return string(password)
+	return string(s)
 }
