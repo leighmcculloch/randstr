@@ -1,8 +1,8 @@
 test:
-	go test -cover . ./cmd/randstr
+	go test -cover ./lib/randstr ./cmd/randstr
 
 build:
-	go build .
+	go build ./lib/randstr
 	go build ./cmd/randstr
 
 install:

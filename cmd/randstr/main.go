@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/leighmcculloch/randstr"
+	"github.com/leighmcculloch/randstr/lib/randstr"
 )
 
 var version string
