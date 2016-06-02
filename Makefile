@@ -5,6 +5,9 @@ cover:
 	go test -coverprofile=coverprofile ./lib/randstr
 	go tool cover -html=coverprofile
 
+bench:
+	go test -bench=. -run='xxx' ./lib/randstr
+
 build:
 	go build ./lib/randstr
 	go build ./cmd/randstr
