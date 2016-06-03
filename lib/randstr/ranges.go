@@ -17,3 +17,12 @@ var (
 	ASCIISymbolRunes     = RuneArray(ASCIISymbolChars)
 	ASCIIRunes           = RuneArray(ASCIIChars)
 )
+
+var (
+	ASCIIUppercase  = RuneArray(ASCIIUppercaseChars)
+	ASCIILowercase  = RuneArray(ASCIILowercaseChars)
+	ASCIINumeric    = RuneArray(ASCIINumericChars)
+	ASCIIWhitespace = RuneArray(ASCIIWhitespaceChars)
+	ASCIISymbol     = RuneArray(ASCIISymbolChars)
+	ASCII           = RuneArray(ASCIIChars)
+)

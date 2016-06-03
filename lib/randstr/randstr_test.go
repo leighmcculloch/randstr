@@ -1,13 +1,16 @@
 package randstr
 
-import "testing"
+import (
+	"crypto/rand"
+	"testing"
+)
 
 func TestNew(t *testing.T) {
 	length := 50
 	attempts := 500
 	passwordsSeen := make(map[string]bool)
 	for i := 0; i < attempts; i++ {
-		password := New(length, RuneArray(ASCIINumericRunes))
+		password := New(rand.Reader, length, RuneArray(ASCIINumericRunes))
 		passwordLen := len(password)
 		switch {
 		case passwordLen != length:

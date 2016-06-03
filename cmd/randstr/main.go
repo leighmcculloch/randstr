@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/rand"
 	"flag"
 	"fmt"
 
@@ -35,5 +36,5 @@ func main() {
 		return
 	}
 
-	fmt.Println(randstr.New(length, randstr.RuneArray(chars)))
+	fmt.Println(randstr.New(rand.Reader, length, randstr.RuneArray(chars)))
 }
