@@ -5,7 +5,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/leighmcculloch/randstr)](https://goreportcard.com/report/github.com/leighmcculloch/randstr)
 [![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/leighmcculloch/randstr)
 
-Randstr generates random strings (passwords), supporting unicode and emojis.
+Randstr is a package and a CLI that generates random strings (e.g. passwords), supporting unicode and emojis.
 
 ## Install
 
@@ -59,14 +59,17 @@ $ randstr | pbcopy
 Use the package by go getting and importing:
 
 ```shell
-go get github.com/leighmcculloch/randstr
+go get github.com/leighmcculloch/randstr/lib/randstr
 ```
 
 ```go
-import "github.com/leighmcculloch/randstr"
+import (
+  "crypto/rand"
+  "github.com/leighmcculloch/randstr/lib/randstr"
+)
 
 func main() {
-  password := randstr.New(50, randstr.ASCIIRunes)
+  password := randstr.New(rand.Reader, 50, randstr.ASCIICharset)
   fmt.Printf("Password: %s\n", password)
 }
 ```
