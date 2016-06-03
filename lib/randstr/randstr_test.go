@@ -10,7 +10,7 @@ func TestString(t *testing.T) {
 	attempts := 500
 	passwordsSeen := make(map[string]bool)
 	for i := 0; i < attempts; i++ {
-		password := String(rand.Reader, length, RuneArray(ASCIINumericRunes))
+		password := String(rand.Reader, length, ASCIINumeric)
 		passwordLen := len(password)
 		switch {
 		case passwordLen != length:

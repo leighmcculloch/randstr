@@ -1,51 +1,51 @@
 package randstr
 
-type Runes interface {
+type Charset interface {
 	At(i int) rune
 	Length() int
 }
 
-type RuneArray []rune
+type CharsetArray []rune
 
-func (r RuneArray) At(i int) rune {
-	return r[i]
+func (c CharsetArray) At(i int) rune {
+	return c[i]
 }
 
-func (r RuneArray) Length() int {
-	return len(r)
+func (c CharsetArray) Length() int {
+	return len(c)
 }
 
-type RuneRange struct {
+type CharsetRange struct {
 	First rune
 	Last  rune
 }
 
-func (r RuneRange) At(i int) rune {
-	return r.First + rune(i)
+func (c CharsetRange) At(i int) rune {
+	return c.First + rune(i)
 }
 
-func (r RuneRange) Length() int {
-	return int(r.Last) - int(r.First) + 1
+func (c CharsetRange) Length() int {
+	return int(c.Last) - int(c.First) + 1
 }
 
-type MultipleRunes []Runes
+type Charsets []Charset
 
-func (r MultipleRunes) At(i int) rune {
+func (charsets Charsets) At(i int) rune {
 	offset := 0
-	for _, runes := range r {
-		length := offset + runes.Length()
+	for _, c := range charsets {
+		length := offset + c.Length()
 		if i < length {
-			return runes.At(i - offset)
+			return c.At(i - offset)
 		}
 		offset = length
 	}
 	return 0
 }
 
-func (r MultipleRunes) Length() int {
+func (charsets Charsets) Length() int {
 	length := 0
-	for _, runes := range r {
-		length += runes.Length()
+	for _, c := range charsets {
+		length += c.Length()
 	}
 	return length
 }

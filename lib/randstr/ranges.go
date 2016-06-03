@@ -10,19 +10,10 @@ const (
 )
 
 var (
-	ASCIIUppercaseRunes  = RuneArray(ASCIIUppercaseChars)
-	ASCIILowercaseRunes  = RuneArray(ASCIILowercaseChars)
-	ASCIINumericRunes    = RuneArray(ASCIINumericChars)
-	ASCIIWhitespaceRunes = RuneArray(ASCIIWhitespaceChars)
-	ASCIISymbolRunes     = RuneArray(ASCIISymbolChars)
-	ASCIIRunes           = RuneArray(ASCIIChars)
-)
-
-var (
-	ASCIIUppercase  = RuneArray(ASCIIUppercaseChars)
-	ASCIILowercase  = RuneArray(ASCIILowercaseChars)
-	ASCIINumeric    = RuneArray(ASCIINumericChars)
-	ASCIIWhitespace = RuneArray(ASCIIWhitespaceChars)
-	ASCIISymbol     = RuneArray(ASCIISymbolChars)
-	ASCII           = RuneArray(ASCIIChars)
+	ASCIIUppercase  = CharsetArray(ASCIIUppercaseChars)
+	ASCIILowercase  = CharsetArray(ASCIILowercaseChars)
+	ASCIINumeric    = CharsetArray(ASCIINumericChars)
+	ASCIIWhitespace = CharsetArray(ASCIIWhitespaceChars)
+	ASCIISymbol     = CharsetArray(ASCIISymbolChars)
+	ASCII           = CharsetArray(ASCIIChars)
 )

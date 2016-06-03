@@ -6,28 +6,28 @@ import (
 )
 
 func BenchmarkNewSmallSource(b *testing.B) {
-	runes := RuneArray(ASCIIRunes)
+	charsets := CharsetArray(ASCII)
 	for i := 0; i < b.N; i++ {
-		String(rand.Reader, 50, runes)
+		String(rand.Reader, 50, charsets)
 	}
 }
 
 func BenchmarkNewLargeSource(b *testing.B) {
-	runes := RuneRange{0, 9999999}
+	charsets := CharsetRange{0, 9999999}
 	for i := 0; i < b.N; i++ {
-		String(rand.Reader, 50, runes)
+		String(rand.Reader, 50, charsets)
 	}
 }
 
 func BenchmarkNewMixedSource(b *testing.B) {
-	runes := MultipleRunes([]Runes{
-		RuneArray(ASCIISymbolRunes),
-		RuneArray(ASCIINumericRunes),
-		RuneArray(ASCIIWhitespaceRunes),
-		RuneRange{'a', 'z'},
-		RuneRange{'A', 'Z'},
+	charsets := Charsets([]Charset{
+		CharsetArray(ASCIISymbol),
+		CharsetArray(ASCIINumeric),
+		CharsetArray(ASCIIWhitespace),
+		CharsetRange{'a', 'z'},
+		CharsetRange{'A', 'Z'},
 	})
 	for i := 0; i < b.N; i++ {
-		String(rand.Reader, 50, runes)
+		String(rand.Reader, 50, charsets)
 	}
 }
