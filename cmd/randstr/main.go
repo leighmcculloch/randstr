@@ -37,6 +37,6 @@ func main() {
 	}
 
 	charset := randstr.CharsetArray(chars)
-	randomString := randstr.String(rand.Reader, length, charset)
+	randomString := randstr.String(rand.Reader, charset, length)
 	fmt.Println(randomString)
 }
