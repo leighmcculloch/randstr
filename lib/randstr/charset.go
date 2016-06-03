@@ -15,6 +15,10 @@ func (c CharsetArray) Length() int {
 	return len(c)
 }
 
+func (c CharsetArray) String() string {
+	return string(c)
+}
+
 type CharsetRange struct {
 	First rune
 	Last  rune

@@ -19,7 +19,7 @@ func init() {
 	flag.BoolVar(&printHelp, "help", false, "display this usage")
 	flag.BoolVar(&printVersion, "version", false, "display the version")
 	flag.IntVar(&length, "l", 50, "`length` of the string generated")
-	flag.StringVar(&chars, "c", randstr.ASCIIChars, "`characters` to potentially use in the string, supporting unicode and emojis")
+	flag.StringVar(&chars, "c", randstr.ASCII.String(), "`characters` to potentially use in the string, supporting unicode and emojis")
 }
 
 func main() {
