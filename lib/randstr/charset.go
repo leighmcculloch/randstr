@@ -34,9 +34,9 @@ func (c CharsetRange) Length() int {
 
 type Charsets []Charset
 
-func (charsets Charsets) At(i int) rune {
+func (cs Charsets) At(i int) rune {
 	offset := 0
-	for _, c := range charsets {
+	for _, c := range cs {
 		length := offset + c.Length()
 		if i < length {
 			return c.At(i - offset)
@@ -46,9 +46,9 @@ func (charsets Charsets) At(i int) rune {
 	return 0
 }
 
-func (charsets Charsets) Length() int {
+func (cs Charsets) Length() int {
 	length := 0
-	for _, c := range charsets {
+	for _, c := range cs {
 		length += c.Length()
 	}
 	return length

@@ -6,7 +6,7 @@ import (
 )
 
 func BenchmarkNewSmallSource(b *testing.B) {
-	charsets := CharsetArray(ASCII)
+	charsets := CharsetArray(ASCIICharset)
 	for i := 0; i < b.N; i++ {
 		String(rand.Reader, 50, charsets)
 	}
@@ -21,9 +21,9 @@ func BenchmarkNewLargeSource(b *testing.B) {
 
 func BenchmarkNewMixedSource(b *testing.B) {
 	charsets := Charsets([]Charset{
-		CharsetArray(ASCIISymbol),
-		CharsetArray(ASCIINumeric),
-		CharsetArray(ASCIIWhitespace),
+		CharsetArray(ASCIISymbolCharset),
+		CharsetArray(ASCIINumericCharset),
+		CharsetArray(ASCIIWhitespaceCharset),
 		CharsetRange{'a', 'z'},
 		CharsetRange{'A', 'Z'},
 	})

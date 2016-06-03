@@ -6,5 +6,5 @@ import (
 )
 
 func ExampleString() {
-	_ = randstr.String(rand.Reader, 50, randstr.ASCII)
+	_ = randstr.String(rand.Reader, 50, randstr.ASCIICharset)
 }
