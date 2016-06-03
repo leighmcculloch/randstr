@@ -4,11 +4,11 @@ import (
 	"io"
 )
 
-// New generates a new random string of length given, using only the characters given in runes.
-func New(rand io.Reader, length int, runes Runes) string {
-	s := make([]rune, length)
+// Rune returns a random array of runes of length given, using only the runes given.
+func Rune(rand io.Reader, length int, charset Runes) []rune {
+	r := make([]rune, length)
 
-	runesCount := runes.Length()
+	runesCount := charset.Length()
 	byteCount := byteLen(runesCount)
 	bytes := make([]byte, byteCount)
 
@@ -21,8 +21,13 @@ func New(rand io.Reader, length int, runes Runes) string {
 		}
 		n = n % runesCount
 
-		s[i] = runes.At(n)
+		r[i] = charset.At(n)
 	}
 
-	return string(s)
+	return r
+}
+
+// String returns a random string of length given, using only the runes given.
+func String(rand io.Reader, length int, charset Runes) string {
+	return string(Rune(rand, length, charset))
 }

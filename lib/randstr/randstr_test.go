@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-func TestNew(t *testing.T) {
+func TestString(t *testing.T) {
 	length := 50
 	attempts := 500
 	passwordsSeen := make(map[string]bool)
 	for i := 0; i < attempts; i++ {
-		password := New(rand.Reader, length, RuneArray(ASCIINumericRunes))
+		password := String(rand.Reader, length, RuneArray(ASCIINumericRunes))
 		passwordLen := len(password)
 		switch {
 		case passwordLen != length:
