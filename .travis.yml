@@ -8,8 +8,9 @@ os:
   - osx
 
 script:
-  - go test -coverprofile=coverage.txt
-  - go vet
+  - go test -coverprofile=coverage.txt ./lib/randstr
+  - go test ./cmd/randstr
+  - go vet ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
