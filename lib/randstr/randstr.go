@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-// Rune returns a random array of runes of length given, using only the runes given.
+// Rune returns a random array of runes of length given, using only the runes given and the io.Reader as the source of randomness.
 func Rune(rand io.Reader, length int, charset Charset) []rune {
 	r := make([]rune, length)
 
@@ -27,7 +27,7 @@ func Rune(rand io.Reader, length int, charset Charset) []rune {
 	return r
 }
 
-// String returns a random string of length given, using only the runes given.
+// String returns a random string of length given, using only the runes given and the io.Reader as the source of randomness.
 func String(rand io.Reader, length int, charset Charset) string {
 	return string(Rune(rand, length, charset))
 }
