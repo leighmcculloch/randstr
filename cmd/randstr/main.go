@@ -36,7 +36,7 @@ func main() {
 		return
 	}
 
-	charset := randstr.CharsetArray(chars)
+	charset := randstr.UnicodeEmojiCharset //randstr.CharsetArray(chars)
 	randomString := randstr.String(rand.Reader, charset, length)
 	fmt.Println(randomString)
 }

@@ -9,33 +9,24 @@ Randstr is a package and a CLI that generates random strings (e.g. passwords), s
 
 ## Install
 
-### Binaries
-
-#### Linux
+### Linux/Mac
 
 ```
-curl -L -o /usr/local/bin/randstr https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/linux/amd64/randstr
+curl -o /usr/local/bin/randstr https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/$(uname -s | tr '[DL]' '[dl]')/amd64/randstr
 chmod +x /usr/local/bin/randstr
-```
-
-#### Mac
-
-```
-brew install https://raw.githubusercontent.com/leighmcculloch/randstr/master/releases/homebrew/randstr.rb
 ```
 
 or
 
 ```
-curl -L -o /usr/local/bin/randstr https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/darwin/amd64/randstr
-chmod +x /usr/local/bin/randstr
+brew install https://raw.githubusercontent.com/leighmcculloch/randstr/master/releases/homebrew/randstr.rb
 ```
 
-#### Windows
+### Windows
 
-[Download the executable](https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/windows/amd64/randstr.exe), and save it anywhere.
+[Download the executable](https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/windows/amd64/randstr.exe), and save it in your path.
 
-### From Source
+### Source
 
 ```
 go install github.com/leighmcculloch/randstr/cmd/randstr
@@ -48,7 +39,7 @@ $ randstr
 Ne*!Z|us'VRu;waO53_g{%*gwbY,vY\nw\wR/"5^cg1JkJ`k`l
 ```
 
-On Mac, you can pipe the password directly to the clipboard with:
+On Mac, you can pipe the output directly to the clipboard with:
 
 ```
 $ randstr | pbcopy
@@ -69,7 +60,7 @@ import (
 )
 
 func main() {
-  password := randstr.New(rand.Reader, 50, randstr.ASCIICharset)
+  password := randstr.String(rand.Reader, randstr.ASCIICharset, 50)
   fmt.Printf("Password: %s\n", password)
 }
 ```
