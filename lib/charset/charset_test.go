@@ -1,8 +1,8 @@
-package randstr
+package charset
 
 import "testing"
 
-func TestCharsetsAt(t *testing.T) {
+func TestAt(t *testing.T) {
 	tests := []struct {
 		Charset      Charset
 		Index        int
@@ -14,9 +14,6 @@ func TestCharsetsAt(t *testing.T) {
 		{CharsetRange{'a', 'c'}, 0, 'a'},
 		{CharsetRange{'a', 'c'}, 1, 'b'},
 		{CharsetRange{'a', 'c'}, 2, 'c'},
-		{Charsets{CharsetRange{'a', 'c'}}, 0, 'a'},
-		{Charsets{CharsetRange{'a', 'c'}}, 1, 'b'},
-		{Charsets{CharsetRange{'a', 'c'}}, 2, 'c'},
 		{Charsets{CharsetRange{'a', 'c'}, CharsetRange{'x', 'z'}}, 0, 'a'},
 		{Charsets{CharsetRange{'a', 'c'}, CharsetRange{'x', 'z'}}, 1, 'b'},
 		{Charsets{CharsetRange{'a', 'c'}, CharsetRange{'x', 'z'}}, 2, 'c'},
@@ -35,7 +32,37 @@ func TestCharsetsAt(t *testing.T) {
 	}
 }
 
-func TestCharsetsLength(t *testing.T) {
+func TestAtOutOfIndex(t *testing.T) {
+	charsets := []Charset{
+		CharsetArray{'a', 'b', 'c'},
+		CharsetRange{'a', 'c'},
+		Charsets{CharsetRange{'a', 'c'}, CharsetRange{'x', 'z'}},
+	}
+	i := 100
+	expectedPanic := "runtime error: index out of range"
+
+	for _, c := range charsets {
+		var r rune
+		var p string
+		func() {
+			defer func() {
+				if r := recover(); r != nil {
+					p = r.(error).Error()
+				}
+			}()
+			r = c.At(i)
+		}()
+		if p == expectedPanic {
+			t.Logf("%#v.At(%d) panic'd %#v", c, i, p)
+		} else if p == "" {
+			t.Errorf("%#v.At(%d) = %d did not panic, expected %#v", c, i, r, expectedPanic)
+		} else {
+			t.Errorf("%#v.At(%d) panic'd %#v, expected %#v", c, i, p, expectedPanic)
+		}
+	}
+}
+
+func TestLength(t *testing.T) {
 	tests := []struct {
 		Charset        Charset
 		ExpectedLength int

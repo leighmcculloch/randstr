@@ -4,26 +4,53 @@ import (
 	"crypto/rand"
 	"flag"
 	"fmt"
-
+	"github.com/leighmcculloch/randstr/lib/charset"
 	"github.com/leighmcculloch/randstr/lib/randstr"
+	"strings"
 )
 
 var version string
 
+var charsetOptions = map[string]charset.Charset{
+	"ASCIIUppercase": charset.ASCIIUppercase,
+	"ASCIILowercase": charset.ASCIILowercase,
+	"ASCIINumeric":   charset.ASCIINumeric,
+	"ASCIISpace":     charset.ASCIISpace,
+	"ASCII":          charset.ASCII,
+	"UnicodeEmoji":   charset.UnicodeEmoji,
+}
+
+var charsetOptionNames = func() []string {
+	names := []string{}
+	for name, _ := range charsetOptions {
+		names = append(names, name)
+	}
+	return names
+}()
+
 var printHelp bool
 var printVersion bool
+var printShortVersion bool
 var length int
 var chars string
+var charsetNameList string
 
 func init() {
 	flag.BoolVar(&printHelp, "help", false, "display this usage")
 	flag.BoolVar(&printVersion, "version", false, "display the version")
+	flag.BoolVar(&printShortVersion, "shortversion", false, "print the version to stdout")
 	flag.IntVar(&length, "l", 50, "`length` of the string generated")
-	flag.StringVar(&chars, "c", randstr.ASCIICharset.String(), "`characters` to potentially use in the string, supporting unicode and emojis")
+	flag.StringVar(&chars, "chars", "", "`chars` to use in the string, supporting unicode and emojis")
+	flag.StringVar(&charsetNameList, "charset", "ASCII", fmt.Sprintf("comma separated list of `charsets` to use in the string, e.g. %s", strings.Join(charsetOptionNames, ",")))
 }
 
 func main() {
 	flag.Parse()
+
+	if printShortVersion {
+		fmt.Println(version)
+		return
+	}
 
 	if printVersion {
 		fmt.Printf("randstr version %s\n", version)
@@ -36,7 +63,18 @@ func main() {
 		return
 	}
 
-	charset := randstr.UnicodeEmojiCharset //randstr.CharsetArray(chars)
-	randomString := randstr.String(rand.Reader, charset, length)
+	var ch charset.Charset
+	if chars != "" {
+		ch = charset.CharsetArray(chars)
+	} else {
+		charsetNames := strings.Split(charsetNameList, ",")
+		charsets := charset.Charsets{}
+		for _, name := range charsetNames {
+			charsets = append(charsets, charsetOptions[name])
+		}
+		ch = charsets
+	}
+
+	randomString := randstr.String(rand.Reader, ch, length)
 	fmt.Println(randomString)
 }

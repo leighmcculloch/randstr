@@ -1,4 +1,6 @@
 *.test
 *.cpu
+coverprofile*
 cmd/randstr/randstr*
 binaries/
+homebrew/

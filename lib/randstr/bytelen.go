@@ -1,5 +1,6 @@
 package randstr
 
+// byteLen returns the minimum number of bytes that would be required to store the integer.
 func byteLen(n int) int {
 	b := 0
 	s := 1

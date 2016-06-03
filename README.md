@@ -9,17 +9,16 @@ Randstr is a package and a CLI that generates random strings (e.g. passwords), s
 
 ## Install
 
+### Mac
+
+```
+brew install leighmcculloch/randstr/randstr
+```
+
 ### Linux/Mac
 
 ```
-curl -o /usr/local/bin/randstr https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/$(uname -s | tr '[DL]' '[dl]')/amd64/randstr
-chmod +x /usr/local/bin/randstr
-```
-
-or
-
-```
-brew install https://raw.githubusercontent.com/leighmcculloch/randstr/master/releases/homebrew/randstr.rb
+curl -o /usr/local/bin/randstr https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/$(uname -s | tr '[:upper:]' '[:lower:]')/amd64/randstr && chmod +x /usr/local/bin/randstr
 ```
 
 ### Windows
@@ -50,17 +49,18 @@ $ randstr | pbcopy
 Use the package by go getting and importing:
 
 ```shell
-go get github.com/leighmcculloch/randstr/lib/randstr
+go get github.com/leighmcculloch/randstr/...
 ```
 
 ```go
 import (
   "crypto/rand"
   "github.com/leighmcculloch/randstr/lib/randstr"
+  "github.com/leighmcculloch/randstr/lib/charset"
 )
 
 func main() {
-  password := randstr.String(rand.Reader, randstr.ASCIICharset, 50)
+  password := randstr.String(rand.Reader, charset.ASCII, 50)
   fmt.Printf("Password: %s\n", password)
 }
 ```
