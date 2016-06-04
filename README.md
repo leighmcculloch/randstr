@@ -44,6 +44,21 @@ On Mac, you can pipe the output directly to the clipboard with:
 $ randstr | pbcopy
 ```
 
+Change the charset:
+
+```
+$ randstr -charset ASCII
+NKpZTyBWA;nq3!Lo9qE0OtUC#-Q{UR{I8W"CJFO2u\zam!Nt6c
+```
+```
+$ randstr -charset ASCIIUppercase,ASCIINumeric
+A9B6VPQG7S3Y0B8QAU16GJGQ2X8HGV24JWOP3NEO84Q7QM416S
+```
+```
+$ randstr -charset UnicodeEmoji -l 10
+🔙🐨👲🐌🙎🌀👹👾🌺👣
+```
+
 ## Package
 
 Use the package by go getting and importing:
