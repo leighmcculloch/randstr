@@ -33,10 +33,13 @@ release:
 	git branch -D binaries-draft 2>/dev/null | true
 	git checkout -b binaries-draft
 	git add -f binaries
-	git commit -m "Release to branch `binaries`"
+	git commit -m "Release to branch binaries"
 	git subtree split --prefix binaries -b binaries
 	git push --force origin binaries:binaries
 
+	git branch -D homebrew 2>/dev/null | true
+	git branch -D homebrew-draft 2>/dev/null | true
+	git checkout -b homebrew-draft
 	mkdir -p homebrew/Formula
 	@echo "Homebrew formula for [randstr](https://github.com/leighmcculloch/randstr)." > homebrew/README.md
 	@echo "\
@@ -44,7 +47,7 @@ release:
 		homepage \"https://github.com/leighmcculloch/randstr\" \n\
 		url \"https://raw.githubusercontent.com/leighmcculloch/randstr/binaries/darwin/amd64/randstr\" \n\
 		version \"$$(./binaries/darwin/amd64/randstr -shortversion)\" \n\
-		sha256 \"$$(shasum -b -a 256 ./binaries/darwin/amd64/randstr |cut -f 1 -d " ")\" \n\
+		sha256 \"$$(shasum -b -a 256 ./binaries/darwin/amd64/randstr | cut -f 1 -d " ")\" \n\
 	\n\
 		def install \n\
 			bin.install \"randstr\" \n\
@@ -53,13 +56,17 @@ release:
 		test do \n\
 			system \"#{bin}/randstr\", \"-version\" \n\
 		end \n\
-	end" > homebrew/Formula/randstr.rb 
-	git branch -D homebrew 2>/dev/null | true
-	git branch -D homebrew-draft 2>/dev/null | true
-	git checkout -b homebrew-draft
+	end" > homebrew/Formula/randstr.rb
 	git add -f homebrew
-	git commit -m "Release to branch `master` of remote `homebrew`"
-	git subtree split --prefix homebrew -b homebrew
-	git push --force homebrew homebrew:master
+	git commit -m "Release to branch master of remote homebrew"
+	git fetch homebrew
+	git checkout -b homebrew homebrew/master
+	git read-tree --prefix master -u homebrew-draft
+	git reset
+	cp -R master/homebrew/* ./
+	rm -fR master
+	git add .
+	git commit -m "Release to homebrew"
+	git push homebrew homebrew:master
 	
-	git checkout @{-2}
+	git checkout @{-3}
