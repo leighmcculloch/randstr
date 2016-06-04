@@ -58,6 +58,10 @@ A9B6VPQG7S3Y0B8QAU16GJGQ2X8HGV24JWOP3NEO84Q7QM416S
 $ randstr -charset UnicodeEmoji -l 10
 🔙🐨👲🐌🙎🌀👹👾🌺👣
 ```
+```
+$ randstr -chars 0123456789abcdef
+fb972ac28f98ae872a1f42ec707d2f7e0061e22f45e9703275
+```
 
 ## Package
 
