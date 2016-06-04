@@ -70,9 +70,18 @@ func main() {
 		charsetNames := strings.Split(charsetNameList, ",")
 		charsets := charset.Charsets{}
 		for _, name := range charsetNames {
-			charsets = append(charsets, charsetOptions[name])
+			charsetOption, ok := charsetOptions[name]
+			if !ok {
+				fmt.Printf("Error: Charset %s unknown. See the help.\n", name)
+				continue
+			}
+			charsets = append(charsets, charsetOption)
 		}
 		ch = charsets
+	}
+
+	if ch.Length() == 0 {
+		return
 	}
 
 	randomString := randstr.String(rand.Reader, ch, length)
