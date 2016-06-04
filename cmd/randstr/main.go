@@ -12,12 +12,13 @@ import (
 var version string
 
 var charsetOptions = map[string]charset.Charset{
-	"ASCIIUppercase": charset.ASCIIUppercase,
-	"ASCIILowercase": charset.ASCIILowercase,
-	"ASCIINumeric":   charset.ASCIINumeric,
-	"ASCIISpace":     charset.ASCIISpace,
-	"ASCII":          charset.ASCII,
-	"UnicodeEmoji":   charset.UnicodeEmoji,
+	"ASCIIUppercase":  charset.ASCIIUppercase,
+	"ASCIILowercase":  charset.ASCIILowercase,
+	"ASCIINumeric":    charset.ASCIINumeric,
+	"ASCIISpace":      charset.ASCIISpace,
+	"ASCII":           charset.ASCII,
+	"UnicodePassword": charset.UnicodePassword,
+	"UnicodeEmoji":    charset.UnicodeEmoji,
 }
 
 var charsetOptionNames = func() []string {
