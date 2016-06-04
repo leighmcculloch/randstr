@@ -62,6 +62,10 @@ $ randstr -charset UnicodeEmoji -l 10
 $ randstr -chars 0123456789abcdef
 fb972ac28f98ae872a1f42ec707d2f7e0061e22f45e9703275
 ```
+```
+$ randstr -charset ASCII,UnicodePassword
+ʵƦƅȿͺɄϬɚYʩʜǇ͢ȠίϾϺĄ̑ȬˁȞ̈́Ȫˑǆȿˀϡʪͻ'ɕ̉ȷǋɃȨƱϷυ[ʦΖϗ̮
+```
 
 ## Package
 
