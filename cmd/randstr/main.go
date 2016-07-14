@@ -23,7 +23,7 @@ var charsetOptions = map[string]charset.Charset{
 
 var charsetOptionNames = func() []string {
 	names := []string{}
-	for name, _ := range charsetOptions {
+	for name := range charsetOptions {
 		names = append(names, name)
 	}
 	return names
