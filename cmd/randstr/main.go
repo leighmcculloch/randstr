@@ -4,9 +4,10 @@ import (
 	"crypto/rand"
 	"flag"
 	"fmt"
+	"strings"
+
 	"github.com/leighmcculloch/randstr/lib/charset"
 	"github.com/leighmcculloch/randstr/lib/randstr"
-	"strings"
 )
 
 var version string
