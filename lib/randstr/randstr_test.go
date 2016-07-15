@@ -23,7 +23,10 @@ func TestString(t *testing.T) {
 	for _, test := range tests {
 		seen := make(map[string]bool)
 		for i := 0; i < attempts; i++ {
-			s := String(test.Rand, test.Charset, test.Length)
+			s, err := String(test.Rand, test.Charset, test.Length)
+			if err != nil {
+				t.Fatalf("Creating string returned error: %#v", err)
+			}
 			sLen := len([]rune(s))
 			switch {
 			case sLen != test.Length:
@@ -37,4 +40,23 @@ func TestString(t *testing.T) {
 		}
 		t.Logf("Created %d strings, all unique, all len %d.", len(seen), test.Length)
 	}
+}
+
+type ReaderThatErrors struct{}
+
+func (r ReaderThatErrors) Read(_ []byte) (int, error) {
+	return 0, fmt.Errorf("Error occurred during read")
+}
+
+func TestString_Error(t *testing.T) {
+	expectedErr := fmt.Errorf("Error occurred during read")
+	rand := ReaderThatErrors{}
+	_, err := String(rand, charset.ASCII, 50)
+	if err == nil {
+		t.Fatalf("Creating string returned without error, expected error: %#v", expectedErr)
+	}
+	if err.Error() != expectedErr.Error() {
+		t.Fatalf("Creating string returned error %#v, expected error: %#v", err, expectedErr)
+	}
+	t.Logf("Creating string returned error: %#v", err)
 }

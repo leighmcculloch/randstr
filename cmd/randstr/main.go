@@ -86,6 +86,10 @@ func main() {
 		return
 	}
 
-	randomString := randstr.String(rand.Reader, ch, length)
+	randomString, err := randstr.String(rand.Reader, ch, length)
+	if err != nil {
+		fmt.Printf("Error encountered:\n%s", err.Error())
+		return
+	}
 	fmt.Println(randomString)
 }

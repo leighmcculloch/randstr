@@ -8,5 +8,5 @@ import (
 )
 
 func ExampleString() {
-	_ = randstr.String(rand.Reader, charset.ASCII, 50)
+	_, _ = randstr.String(rand.Reader, charset.ASCII, 50)
 }
