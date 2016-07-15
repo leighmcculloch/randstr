@@ -2,9 +2,11 @@ package randstr
 
 import (
 	"crypto/rand"
-	"github.com/leighmcculloch/randstr/lib/charset"
+	"fmt"
 	"io"
 	"testing"
+
+	"github.com/leighmcculloch/randstr/lib/charset"
 )
 
 func TestString(t *testing.T) {
@@ -15,7 +17,7 @@ func TestString(t *testing.T) {
 	}{
 		{rand.Reader, charset.ASCII, 50},
 		{rand.Reader, charset.UnicodeEmoji, 50},
-		{rand.Reader, charset.CharsetRange{0, 0x7FFF}, 50},
+		{rand.Reader, charset.CharsetRange{First: 0, Last: 0x7FFF}, 50},
 	}
 	attempts := 500
 	for _, test := range tests {

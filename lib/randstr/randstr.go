@@ -1,8 +1,9 @@
 package randstr
 
 import (
-	"github.com/leighmcculloch/randstr/lib/charset"
 	"io"
+
+	"github.com/leighmcculloch/randstr/lib/charset"
 )
 
 // Runes returns a random array of runes of length, using only the runes given and the io.Reader as the source of randomness.
