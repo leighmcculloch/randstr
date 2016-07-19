@@ -4,10 +4,12 @@ import (
 	"crypto/rand"
 	"flag"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/leighmcculloch/randstr/lib/charset"
 	"github.com/leighmcculloch/randstr/lib/randstr"
+	"github.com/leighmcculloch/randstr/lib/runes"
 )
 
 var version string
@@ -86,10 +88,10 @@ func main() {
 		return
 	}
 
-	randomString, err := randstr.String(rand.Reader, ch, length)
+	err := randstr.Write(runes.ByteWriter{Writer: os.Stdout}, rand.Reader, ch, length)
 	if err != nil {
 		fmt.Printf("Error encountered:\n%s", err.Error())
 		return
 	}
-	fmt.Println(randomString)
+	fmt.Println("")
 }
