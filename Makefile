@@ -15,7 +15,7 @@ build:
 	go build ./cmd/randstr
 
 install:
-	go install -ldflags "-X main.version=+`git rev-parse --short HEAD`" ./cmd/randstr
+	go install -ldflags "-X main.version=`date +"%Y%m%d"`+`git rev-parse --short HEAD`" ./cmd/randstr
 
 clean:
 	go clean
@@ -25,9 +25,9 @@ release:
 	mkdir -p binaries/linux/amd64
 	mkdir -p binaries/darwin/amd64
 	mkdir -p binaries/windows/amd64
-	GOARCH=amd64 GOOS=linux go build -ldflags "-X main.version=+`git rev-parse --short HEAD`" -o binaries/linux/amd64/randstr ./cmd/randstr
-	GOARCH=amd64 GOOS=darwin go build -ldflags "-X main.version=+`git rev-parse --short HEAD`" -o binaries/darwin/amd64/randstr ./cmd/randstr
-	GOARCH=amd64 GOOS=windows go build -ldflags "-X main.version=+`git rev-parse --short HEAD`" -o binaries/windows/amd64/randstr.exe ./cmd/randstr
+	GOARCH=amd64 GOOS=linux go build -ldflags "-X main.version=`date +"%Y%m%d"`+`git rev-parse --short HEAD`" -o binaries/linux/amd64/randstr ./cmd/randstr
+	GOARCH=amd64 GOOS=darwin go build -ldflags "-X main.version=`date +"%Y%m%d"`+`git rev-parse --short HEAD`" -o binaries/darwin/amd64/randstr ./cmd/randstr
+	GOARCH=amd64 GOOS=windows go build -ldflags "-X main.version=`date +"%Y%m%d"`+`git rev-parse --short HEAD`" -o binaries/windows/amd64/randstr.exe ./cmd/randstr
 	
 	git branch -D binaries 2>/dev/null | true
 	git branch -D binaries-draft 2>/dev/null | true
