@@ -83,7 +83,11 @@ import (
 )
 
 func main() {
-  password := randstr.String(rand.Reader, charset.ASCII, 50)
+  password, err := randstr.String(rand.Reader, charset.ASCII, 50)
+  if err != nil {
+    fmt.Printf("Error: %v\n", err)
+    return
+  }
   fmt.Printf("Password: %s\n", password)
 }
 ```
