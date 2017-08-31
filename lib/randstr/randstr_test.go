@@ -6,7 +6,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/leighmcculloch/randstr/lib/charset"
+	"4d63.com/randstr/lib/charset"
 )
 
 func TestString(t *testing.T) {

@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/leighmcculloch/randstr/lib/charset"
-	"github.com/leighmcculloch/randstr/lib/randstr"
-	"github.com/leighmcculloch/randstr/lib/runes"
+	"4d63.com/randstr/lib/charset"
+	"4d63.com/randstr/lib/randstr"
+	"4d63.com/randstr/lib/runes"
 )
 
 var version string

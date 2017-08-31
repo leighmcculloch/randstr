@@ -2,7 +2,7 @@ version: 1.0.{build}
 branches:
 except:
 - binaries
-clone_folder: c:\gopath\src\github.com\leighmcculloch\randstr
+clone_folder: c:\gopath\src\4d63.com\randstr
 environment:
   GOVERSION: 1.9
   GOPATH: c:\gopath

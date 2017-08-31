@@ -2,8 +2,9 @@ package randstr
 
 import (
 	"crypto/rand"
-	"github.com/leighmcculloch/randstr/lib/charset"
 	"testing"
+
+	"4d63.com/randstr/lib/charset"
 )
 
 func BenchmarkNewSmallSource(b *testing.B) {

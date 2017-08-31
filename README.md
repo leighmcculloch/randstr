@@ -28,7 +28,7 @@ curl -o /usr/local/bin/randstr https://raw.githubusercontent.com/leighmcculloch/
 ### Source
 
 ```
-go install github.com/leighmcculloch/randstr/cmd/randstr
+go install 4d63.com/randstr/cmd/randstr
 ```
 
 ## Usage
@@ -72,14 +72,14 @@ $ randstr -charset ASCII,UnicodePassword
 Use the package by go getting and importing:
 
 ```shell
-go get github.com/leighmcculloch/randstr/...
+go get 4d63.com/randstr/...
 ```
 
 ```go
 import (
   "crypto/rand"
-  "github.com/leighmcculloch/randstr/lib/randstr"
-  "github.com/leighmcculloch/randstr/lib/charset"
+  "4d63.com/randstr/lib/randstr"
+  "4d63.com/randstr/lib/charset"
 )
 
 func main() {

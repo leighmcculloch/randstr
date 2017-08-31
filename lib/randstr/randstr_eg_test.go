@@ -3,8 +3,8 @@ package randstr_test
 import (
 	"crypto/rand"
 
-	"github.com/leighmcculloch/randstr/lib/charset"
-	"github.com/leighmcculloch/randstr/lib/randstr"
+	"4d63.com/randstr/lib/charset"
+	"4d63.com/randstr/lib/randstr"
 )
 
 func ExampleString() {

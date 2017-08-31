@@ -3,8 +3,8 @@ package randstr
 import (
 	"io"
 
-	"github.com/leighmcculloch/randstr/lib/charset"
-	"github.com/leighmcculloch/randstr/lib/runes"
+	"4d63.com/randstr/lib/charset"
+	"4d63.com/randstr/lib/runes"
 )
 
 // Write writes to the writer random runes (as bytes), using only the runes given and the io.Reader as the source of randomness. For cryptographic randomness use crypto/rand's Reader.
