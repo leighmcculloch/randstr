@@ -12,7 +12,7 @@ Randstr is a package and a CLI that generates random strings (e.g. passwords), s
 ### Mac
 
 ```
-brew install leighmcculloch/randstr/randstr
+brew install 4d63/randstr/randstr
 ```
 
 ### Linux/Mac
