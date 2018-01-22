@@ -1,10 +1,17 @@
-// +build go1.9
+// +build !go1.9
 
 package randstr
 
-import "math/bits"
-
 // byteLen returns the minimum number of bytes that would be required to store the integer.
 func byteLen(n int) int {
-	return (bits.Len(uint(n))-1)/8 + 1
+	b := 0
+	s := 1
+	for s != 0 {
+		b++
+		s = s << 8
+		if n < s {
+			return b
+		}
+	}
+	return b
 }

@@ -3,6 +3,7 @@ language: go
 go_import_path: 4d63.com/randstr
 
 go:
+  - 1.8
   - 1.9
   - tip
 
