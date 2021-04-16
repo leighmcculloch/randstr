@@ -12,9 +12,6 @@ os:
   - osx
 
 script:
-  - go test -coverprofile=coverage.txt ./lib/randstr
+  - go test -cover ./lib/randstr
   - go test ./cmd/randstr
   - go vet ./...
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)

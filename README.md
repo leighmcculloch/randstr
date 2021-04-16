@@ -1,7 +1,6 @@
 # randstr
 [![Linux/OSX Build Status](https://img.shields.io/travis/leighmcculloch/randstr.svg?label=linux%20%26%20osx)](https://travis-ci.org/leighmcculloch/randstr)
 [![Windows Build Status](https://img.shields.io/appveyor/ci/leighmcculloch/randstr.svg?label=windows)](https://ci.appveyor.com/project/leighmcculloch/randstr)
-[![Codecov](https://img.shields.io/codecov/c/github/leighmcculloch/randstr.svg)](https://codecov.io/gh/leighmcculloch/randstr)
 [![Go Report Card](https://goreportcard.com/badge/github.com/leighmcculloch/randstr)](https://goreportcard.com/report/github.com/leighmcculloch/randstr)
 [![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/leighmcculloch/randstr)
 
